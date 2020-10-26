@@ -39,7 +39,7 @@ public class ControlHandle : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     #region Events
     public virtual void OnClick()
     {
-        Debug.Log(gameObject.name + "Base Click");
+        //Debug.Log(gameObject.name + "Base Click");
         ActionEventCenter.GetInstance().EventTrigger(TargetID, 
             new ControlMsg 
             {
@@ -52,7 +52,7 @@ public class ControlHandle : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public virtual void OnPressBegin()
     {
-        Debug.Log(gameObject.name + "Base Press Begin");
+        //Debug.Log(gameObject.name + "Base Press Begin");
         ActionEventCenter.GetInstance().EventTrigger(TargetID,
         new ControlMsg
         {
@@ -64,7 +64,7 @@ public class ControlHandle : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public virtual void OnPressEnd()
     {
-        Debug.Log(gameObject.name + "Base Press End");
+        //Debug.Log(gameObject.name + "Base Press End");
         ActionEventCenter.GetInstance().EventTrigger(TargetID,
         new ControlMsg
         {
@@ -76,7 +76,7 @@ public class ControlHandle : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public virtual void OnDragUpdate()
     {
-        Debug.Log(gameObject.name + "Base Drag Update");
+        //Debug.Log(gameObject.name + "Base Drag Update");
         ActionEventCenter.GetInstance().EventTrigger(TargetID,
         new ControlMsg
         {
@@ -88,7 +88,7 @@ public class ControlHandle : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public virtual void OnDragEnd()
     {
-        Debug.Log(gameObject.name + "Base Drag End");
+        //Debug.Log(gameObject.name + "Base Drag End");
         ActionEventCenter.GetInstance().EventTrigger(TargetID,
             new ControlMsg
             {

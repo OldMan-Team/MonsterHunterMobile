@@ -9,6 +9,6 @@ public class SimpleFollow : MonoBehaviour
 
     void Update()
     {
-        this.transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y + Height, Target.transform.position.z);
+        this.transform.position = new Vector3(Target.transform.position.x, Target.transform.position.y + Height, Target.transform.position.z - Height / Mathf.Tan(transform.localEulerAngles.x / 180 * Mathf.PI));
     }
 }

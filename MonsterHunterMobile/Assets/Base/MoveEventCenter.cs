@@ -21,7 +21,7 @@ public class MoveEventCenter : SingletonBase<MoveEventCenter>
     {
         if (eventDic.ContainsKey(name))
         {
-            (eventDic[name] as EventInfo<T>).actions.Invoke(msg);
+            (eventDic[name] as EventInfo<T>).action.Invoke(msg);
         }
     }
 
@@ -41,7 +41,7 @@ public class MoveEventCenter : SingletonBase<MoveEventCenter>
         }
         else
         {
-            (eventDic[name] as EventInfo<T>).actions += action;
+            (eventDic[name] as EventInfo<T>).action += action;
         }
     }
 
@@ -57,8 +57,8 @@ public class MoveEventCenter : SingletonBase<MoveEventCenter>
             return;
         if (eventDic.ContainsKey(name))
         {
-            (eventDic[name] as EventInfo<T>).actions -= action;
-            if ((eventDic[name] as EventInfo<T>).actions == null)
+            (eventDic[name] as EventInfo<T>).action -= action;
+            if ((eventDic[name] as EventInfo<T>).action == null)
                 eventDic.Remove(name);
         }
 

@@ -45,6 +45,12 @@ public class Hero : Human
     {
         this.transform.forward = new Vector3(dir.x, 0, dir.y);
     }
+
+    protected Vector2 GetFaceTo()
+    {
+        return new Vector2(this.transform.forward.x, this.transform.forward.z).normalized;
+    }
+
     protected void Update_Move()
     {
         if (isMoving && Moveable)
@@ -54,7 +60,7 @@ public class Hero : Human
         }
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         Update_Move();
     }
