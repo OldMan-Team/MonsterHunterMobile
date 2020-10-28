@@ -9,6 +9,7 @@ public class ArcherAnimCallback : MonoBehaviour
     public UnityEvent RollStartCallback;
     public UnityEvent RollMidCallback;
     public UnityEvent RollEndCallback;
+    public UnityEvent HurtEndCallback;
 
     private void ShootEvent()
     {
@@ -32,5 +33,11 @@ public class ArcherAnimCallback : MonoBehaviour
     {
         if (RollEndCallback != null)
             RollEndCallback.Invoke();
+    }
+
+    private void HurtEndEvent()
+    {
+        if (HurtEndCallback != null)
+            HurtEndCallback.Invoke();
     }
 }
