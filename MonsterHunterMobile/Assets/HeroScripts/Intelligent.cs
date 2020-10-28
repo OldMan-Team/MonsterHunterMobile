@@ -8,6 +8,14 @@ public class Intelligent : MonoBehaviour, Hurtter
     [SerializeField]
     protected float currentHP;
     
+    public bool isDead
+    {
+        get
+        {
+            return currentHP <= 0;
+        }
+    }
+
     protected void ResetAll()
     {
         currentHP = HealthPoint;
@@ -26,6 +34,13 @@ public class Intelligent : MonoBehaviour, Hurtter
     public virtual void Dead()
     {
         EventCenter.GetInstance().EventTrigger("Object Dead", this.gameObject);
+        Debug.Log("Dead");
         //Destroy(this.gameObject);
     }
+
+    public virtual void Start()
+    {
+        ResetAll();
+    }
+
 }

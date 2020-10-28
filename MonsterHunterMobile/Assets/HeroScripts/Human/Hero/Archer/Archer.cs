@@ -7,6 +7,7 @@ public class Archer : Hero
     public float RollSpeed = 5.0f;
 
     public ArcherSkillIndicator indicator;
+    public ArcherInfoUI archerInfoUI;
 
     [SerializeField]
     private bool isRolling = false;
@@ -29,7 +30,20 @@ public class Archer : Hero
     public float BaseChargeLevel = 0.4f;
     //(0,1)代表蓄力状态
     [SerializeField]
-    private float currentChargeLevel;
+    private float _currentChargeLevel;
+    private float currentChargeLevel
+    {
+        get 
+        {
+            return _currentChargeLevel;
+        }
+        set
+        {
+            _currentChargeLevel = value;
+            if (archerInfoUI)
+                archerInfoUI.SetCharge(value);
+        }
+    }
     private float currentChargeRate
     {
         get
@@ -114,7 +128,7 @@ public class Archer : Hero
     //蓄力开始
     public override void OnPressBegin_First()
     {
-        if (isRolling || !Moveable)
+        if (isRolling || !Moveable || isDead)
             return;
         Moveable = false;
 
@@ -173,7 +187,7 @@ public class Archer : Hero
     //改变方向
     public override void OnDragUpdate_First(Vector2 pos)
     {
-        if (isRolling)
+        if (isRolling || isDead)
             return;
 
         if (!isCharging && Moveable)
@@ -188,7 +202,7 @@ public class Archer : Hero
     //射击
     public override void OnDragEnd_First(Vector2 pos)
     {
-        if (isRolling)
+        if (isRolling || isDead)
             return;
         MyAnimator.SetTrigger("Shoot");
         if (isCharging)
@@ -221,11 +235,15 @@ public class Archer : Hero
 
     public override void OnClick_Second()
     {
+        if (isDead)
+            return;
         Roll(GetFaceTo());
     }
 
     public override void OnDragUpdate_Second(Vector2 pos)
     {
+        if (isDead)
+            return;
         indicator.SetIndicatorActive(true);
         indicator.SetDirection(pos);
         indicator.SetLength(2);
@@ -233,12 +251,16 @@ public class Archer : Hero
 
     public override void OnPressEnd_Second()
     {
+        if (isDead)
+            return;
         indicator.SetIndicatorActive(false);
     }
 
     //翻滚
     public override void OnDragEnd_Second(Vector2 pos)
     {
+        if (isDead)
+            return;
         indicator.SetIndicatorActive(false);
         Roll(pos);
     }
@@ -265,4 +287,38 @@ public class Archer : Hero
         Moveable = true;
         StopMove();
     }
+
+    public override void Hurt(float damage)
+    {
+        if (currentHP <= 0)
+            return;
+        base.Hurt(damage);
+        ChargeBreak();
+        MyAnimator.SetTrigger("GetHurt");
+        if (archerInfoUI)
+            archerInfoUI.SetHP(currentHP);
+        StopMove();
+        Moveable = false;
+
+    }
+
+    public override void Dead()
+    {
+        base.Dead();
+        StopMove();
+        Moveable = false;
+        MyAnimator.SetBool("Deadb", true);
+    }
+
+    public void HurtEndCallback()
+    {
+        Moveable = true;
+    }
+
+    //public override void Start()
+    //{
+    //    base.Start();
+    //}
+
+
 }

@@ -48,9 +48,9 @@ public class ArcherArrow : MonoBehaviour
         this.damage_min = damage_min;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        DamageHitter hitter = collision.gameObject.GetComponent<DamageHitter>();
+        DamageHitter hitter = other.gameObject.GetComponent<DamageHitter>();
         if (hitter != null)
         {
             Hit(hitter);
@@ -60,9 +60,22 @@ public class ArcherArrow : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    DamageHitter hitter = collision.gameObject.GetComponent<DamageHitter>();
+    //    if (hitter != null)
+    //    {
+    //        Hit(hitter);
+    //    }
+    //    else
+    //    {
+    //        Destroy(this.gameObject);
+    //    }
+    //}
 
     private void Hit(DamageHitter hitter)
     {
+        Debug.Log("Hit");
         hitter.MakeDamage(damage);
         Destroy(this.gameObject);
     }

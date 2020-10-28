@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1898337081740225453}
   - component: {fileID: 1898337081740225452}
   - component: {fileID: 4476772287158229815}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28,8 +28,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898337081740225448}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 2.683, y: 3.524, z: 5.51}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.638427, y: 1.129, z: -0.4415941}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1898337081928262518}
@@ -105,11 +105,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898337081740225448}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3425143, y: 0.051414363, z: 0.11982176}
-  m_Center: {x: 0.58097804, y: 0, z: 0.000000009313225}
+  m_Size: {x: 1.3425143, y: 0.051414363, z: 0.9139397}
+  m_Center: {x: 0.58097804, y: 0, z: -0.0043862015}
 --- !u!114 &4476772287158229815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,12 +122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cb6d6c7f5f35374aa2f1ff640fd3b55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPos: {x: 0, y: 0, z: 0}
-  distance_max: 0
-  distance_best_max: 0
+  startPos: {x: -3.638427, y: 1.129, z: -0.4415941}
+  distance_max: 100
+  distance_best_max: 100
   distance_best_min: 0
-  damage_max: 0
-  damage_min: 0
+  damage_max: 20
+  damage_min: 20
 --- !u!1 &1898337081928262517
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,7 +138,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1898337081928262518}
   - component: {fileID: 1898337081928262519}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -43,6 +43,8 @@ public class Hero : Human
 
     public void AimTo(Vector2 dir)
     {
+        if (isDead)
+            return;
         this.transform.forward = new Vector3(dir.x, 0, dir.y);
     }
 
@@ -53,7 +55,7 @@ public class Hero : Human
 
     protected void Update_Move()
     {
-        if (isMoving && Moveable)
+        if (isMoving && Moveable && !isDead)
         {
             AimTo(movingDir);
             MyRigidbody.velocity = new Vector3(movingDir.x, 0, movingDir.y) * MoveSpeed;
@@ -65,8 +67,9 @@ public class Hero : Human
         Update_Move();
     }
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         MoveEventCenter.GetInstance().AddEventListener<Vector2>(HeroID, Move);
         ActionEventCenter.GetInstance().AddEventListener<ControlMsg>(HeroID, ControllEventTigger);
     }
@@ -82,6 +85,13 @@ public class Hero : Human
 
     public Animator MyAnimator;
     public Rigidbody MyRigidbody;
+    public GameObject hitter;
+
+    public override void Dead()
+    {
+        base.Dead();
+        hitter.SetActive(false);
+    }
 
     #region Events
     public virtual void ControllEventTigger(ControlMsg msg)

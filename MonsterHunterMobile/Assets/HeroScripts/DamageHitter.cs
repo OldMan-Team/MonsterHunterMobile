@@ -9,9 +9,15 @@ public interface Hurtter
 
 public class DamageHitter : MonoBehaviour
 {
+    public GameObject hurtterObj;
+    public void Start()
+    {
+        hurtter = hurtterObj.GetComponent<Hurtter>();
+    }
     public Hurtter hurtter;
     public void MakeDamage(float Damage)
     {
         hurtter.Hurt(Damage);
     }
+
 }
