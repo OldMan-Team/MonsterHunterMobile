@@ -4,7 +4,6 @@ using UnityEngine;
 using System;
 using System.Net.Sockets;
 using System.Net;
-using Assets.Scripts.Socket.Controller;
 using SocketGameProtocol;
 using Assets.Scripts.Socket.Tool;
 using System.Threading;
@@ -214,6 +213,7 @@ class Server
             Room room = new Room(client, pack.RoomPack[0], this);
             roomList.Add(room);
             Debug.Log("add success");
+            client.GetUserInFo.UserName = pack.User;
             foreach (PlayerPack p in room.GetPlayerInFo())
             {
                 pack.PlayerPack.Add(p);

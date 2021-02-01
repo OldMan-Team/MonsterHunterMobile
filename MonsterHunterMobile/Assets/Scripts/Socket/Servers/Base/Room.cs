@@ -41,7 +41,9 @@ class Room
         foreach (Client c in clientList)
         {
             PlayerPack player = new PlayerPack();
-            Debug.Log("c.GetUserInFo.UserName");
+            if(c.GetUserInFo.UserName==null)
+            Debug.Log("c.GetUserInFo.UserName=null"+clientList.Count);
+
             player.PlayerName = c.GetUserInFo.UserName;
             Debug.Log(c.GetUserInFo.UserName);
             pack.Add(player);

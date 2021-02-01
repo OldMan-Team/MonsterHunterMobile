@@ -83,6 +83,7 @@ public class RequestCenter : BaseManager<RequestCenter>
         MainPack pack = new MainPack();
         pack.RequestCode = RequestCode.Connect;
         pack.ActionCode = ActionCode.CreateRoom;
+        pack.User = GameManager.Instance.name;//传入名字
         RoomPack room = new RoomPack();
         room.RoomName = roomname;
         room.MaxNum = maxnum;

@@ -12,9 +12,9 @@ public class RoomPanel : BasePanel
 {
     public Button back,start;
 
-    public Transform playerMessageTF;
+    //public Transform playerMessageTF;
 
-    public GameObject playerMessagePrefab;
+    //public GameObject playerMessagePrefab;
 
     public Text roomName;
 

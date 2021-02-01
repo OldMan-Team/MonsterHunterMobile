@@ -24,7 +24,7 @@ public class UIManager : SingletonMono<UIManager>
 
     void Start()
     {
-        InitPanel();
+        InitPanelPath();
         canvasTransform = GameObject.Find("Canvas").transform;
         normalPanelTf = GameObject.Find("normalPanel").transform;
         noticePanelTf = GameObject.Find("noticePanel").transform;
@@ -54,12 +54,12 @@ public class UIManager : SingletonMono<UIManager>
             }
             else if(panelType == PanelType.normalPanel)
             {
+                Debug.Log("push1");
                 if (normalPanelStack.Count > 0)
                 {
                     BasePanel topPanel = normalPanelStack.Peek();
                     topPanel.OnPause();
                 }
-
                 normalPanelStack.Push(panel);
                 panel.OnEnter();
                 Debug.Log("调用");
@@ -70,7 +70,9 @@ public class UIManager : SingletonMono<UIManager>
         }
         else
         {
+            Debug.Log("push2");
             BasePanel panelObject = SpawnPanel(panelName);
+            Debug.Log("push3");
             if (panelType == PanelType.normalPanel)
             {
                 if (normalPanelStack.Count > 0)
@@ -146,6 +148,7 @@ public class UIManager : SingletonMono<UIManager>
     /// <param name="panelType"></param>
     private BasePanel SpawnPanel(PanelName panelType)
     {
+        Debug.Log("push2.1");
         if (panelPath.TryGetValue(panelType, out string path))
         {
             GameObject g = GameObject.Instantiate(Resources.Load(path)) as GameObject;
@@ -173,7 +176,7 @@ public class UIManager : SingletonMono<UIManager>
     /// <summary>
     /// 初始化ui路径
     /// </summary>
-    private void InitPanel()
+    private void InitPanelPath()
     {
         string panelpath = "Panel/";
         string[] path = new string[] { "MessagePanel", "StartPanel", "InputPanel","RoomListPanel", "RoomPanel", "GamePanel" };

@@ -7,7 +7,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using SocketGameProtocol;
-using Assets.Scripts.Socket.Controller;
 using Assets.Scripts.Socket.Tool;
 
 class UDPServer

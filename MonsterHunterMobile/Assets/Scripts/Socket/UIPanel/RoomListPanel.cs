@@ -59,11 +59,12 @@ public class RoomListPanel : BasePanel
         {
             case ReturnCode.Succeed:
                 
-                UIManager.Instance.ShowMessage("创建成功！");
+                //UIManager.Instance.ShowMessage("创建成功！");
                 Debug.Log("房间创建成功0！");
                 RoomPanel roomPanel = UIManager.Instance.PushPanel(PanelName.Room,PanelType.normalPanel).GetComponent<RoomPanel>();
-                roomPanel.UpdatePlayerList(pack);
                 Debug.Log("房间创建成功1！");
+                roomPanel.UpdatePlayerList(pack);
+                Debug.Log("房间创建成功2！");
                 break;
             case ReturnCode.Fail:
                 Debug.Log("房间创建失败！");
