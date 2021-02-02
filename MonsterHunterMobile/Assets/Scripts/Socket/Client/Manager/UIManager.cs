@@ -152,6 +152,7 @@ public class UIManager : SingletonMono<UIManager>
         if (panelPath.TryGetValue(panelType, out string path))
         {
             GameObject g = GameObject.Instantiate(Resources.Load(path)) as GameObject;
+            Debug.Log("push2.2");
             if (panelType == PanelName.Message)
             {
                 g.transform.SetParent(noticePanelTf, false);
