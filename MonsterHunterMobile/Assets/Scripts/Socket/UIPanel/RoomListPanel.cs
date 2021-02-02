@@ -58,8 +58,16 @@ public class RoomListPanel : BasePanel
         switch (pack.ReturnCode)
         {
             case ReturnCode.Succeed:
+
+                try
+                {
+                    UIManager.Instance.ShowMessage("创建成功！");
+                }
+                catch(Exception e)
+                {
+                    Debug.Log(e);
+                }
                 
-                //UIManager.Instance.ShowMessage("创建成功！");
                 Debug.Log("房间创建成功0！");
                 RoomPanel roomPanel = UIManager.Instance.PushPanel(PanelName.Room,PanelType.normalPanel).GetComponent<RoomPanel>();
                 Debug.Log("房间创建成功1！");
